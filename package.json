@@ -1,0 +1,84 @@
+{
+  "name": "pharmacy-management-app",
+  "productName": "PharmacyCare Pro",
+  "version": "1.0.0",
+  "description": "Secure Offline-First Pharmacy Management System with SQLCipher Encryption",
+  "main": "electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "start": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "vite:dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:start": "electron .",
+    "app:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "seed": "node electron/seed.js",
+    "dist": "vite build && electron-builder",
+    "electron:build": "vite build && electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^0.344.0",
+    "node-machine-id": "^1.1.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "electron": "^29.4.6",
+    "electron-builder": "^24.13.3",
+    "javascript-obfuscator": "^5.5.0",
+    "terser": "^5.49.0",
+    "vite": "^5.1.6",
+    "vite-plugin-javascript-obfuscator": "^3.1.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.pharmacycare.pro",
+    "productName": "PharmacyCare Pro",
+    "forceCodeSigning": false,
+    "npmRebuild": false,
+    "nodeGypRebuild": false,
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!generator.js",
+      "!electron/generator.js",
+      "!userData/**/*",
+      "!**/*.db",
+      "!**/*.sqlite",
+      "!**/*.sqlite3",
+      "!**/*.log",
+      "!dev.db"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "PharmacyCare Pro"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+dist/
+release/
+build/
+userData/
+
+# Security & Key Generator Exclusions
+generator.js
+electron/generator.js
+license.key
+license.json
+*.key
+
+# Database & SQLite files
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+pharmacy_secure.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Config
+.env
+.env.local
+.env.*.local
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+node_modules/
+release/
+dist/
+*.db
+*.exe
